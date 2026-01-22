@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
+import { ENV } from "./env.js";
 
 export const generateToken = (userId,res) => {
-  const {JWT_SECRET} = process.env;
+  const {JWT_SECRET} = ENV;
   if(!JWT_SECRET){
     throw new Error("JWT_SECRET is not defined in environment variables");
   }
@@ -13,7 +14,7 @@ export const generateToken = (userId,res) => {
     maxAge: 7*24*60*60*1000, // 7 days
     httpOnly: true, // prevent XSS Attacks : cross-site scripting
     sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: ENV.NODE_ENV === "production",
   });
 
   return token;
