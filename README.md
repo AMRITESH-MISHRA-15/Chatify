@@ -19,7 +19,6 @@ This project focuses on **clean system design, performance, and real-world produ
 - 🎨 Responsive UI with React, Tailwind CSS & DaisyUI
 - 🧠 Global State Management via Zustand
 - 🧑‍💻 Professional Git Workflow (branches, PRs, merges)
-- 🚀 Deployment-ready (free-tier friendly with Sevalla)
 
 ---
 
