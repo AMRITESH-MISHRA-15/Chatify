@@ -1,7 +1,6 @@
 import {create} from "zustand";
 import { axiosInstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
-import { LogOut } from "lucide-react";
 
 export const useAuthStore = create((set) => ({
   authUser: null,
@@ -58,6 +57,16 @@ export const useAuthStore = create((set) => ({
       toast.error("Error logging out. Please try again.");
       console.log("Logout error:", error);
     }
-  }
+  },
 
+  updateProfile: async (data) => {
+    try {
+      const res = await axiosInstance.put("/auth/update-profile", data);
+      set({authUser: res.data});
+      toast.success("Profile updated successfully!");
+    } catch (error) {
+      console.log("Error in update Profile:", error);
+      toast.error(error.response.data.message);
+    }
+  }
 }));
