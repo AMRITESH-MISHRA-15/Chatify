@@ -12,7 +12,7 @@ export const sendWelcomeEmail = async (email,name,clientURL) => {
 
   if (error) {
     console.error("Error sending welcome email:", error);
-    throw new Error("Failed to send welcome email");
+    return; // Don't throw — email failure shouldn't block user signup
   }
   
   console.log("Welcome email sent successfully:", data);
